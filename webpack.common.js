@@ -1,6 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 // allows for separatating media queries into different files.
@@ -21,11 +21,10 @@ module.exports = {
     path.resolve(__dirname, 'js', 'index.js'),
   ],
   output: {
+
+    // set filenames based on environment
+
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[contenthash].js',
-    chunkFilename: '[name].[contenthash].js',
-    // filename: '[name].js',
-    // chunkFilename: '[name].js',
     publicPath: '/dist/'
   },
   optimization: {
@@ -85,7 +84,8 @@ module.exports = {
   },
   plugins: [
     // enable plugins with settings
-    new CleanWebpackPlugin(),
+
+    // this one doesn't seem to work...
 
     // use HtmlWebpackPlugin before others
     // https://github.com/jantimon/html-webpack-plugin#usage
@@ -95,10 +95,10 @@ module.exports = {
       // hash: true,
       inject: false
     }),
-    new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css',
-      chunkFilename: '[name].[contenthash].css'
-    }),
+    // new MiniCssExtractPlugin({
+    //   filename: '[name].[contenthash].css',
+    //   chunkFilename: '[name].[contenthash].css'
+    // }),
     new MediaQueryPlugin({
       include: [
         'style'
@@ -107,6 +107,10 @@ module.exports = {
         'screen and (min-width: 60rem)': 'desktop'
       }
     }),
+    // new CleanWebpackPlugin({
+    //   // dry: true,
+    //   // cleanOnceBeforeBuildPatterns: ['**/*/']
+    // }),
 
   ]
 }

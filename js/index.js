@@ -39,7 +39,7 @@ classTestBtn.addEventListener('click', () => {
       // await thing.init()
       // console.log(thing.test, '2')
     })
-    .catch(err => console.log(err))
+    // .catch(err => console.log(err))
 })
 
 getUsersBtn.addEventListener('click', () => {
