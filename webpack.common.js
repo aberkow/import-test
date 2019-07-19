@@ -84,9 +84,7 @@ module.exports = {
   },
   plugins: [
     // enable plugins with settings
-
-    // this one doesn't seem to work...
-
+    
     // use HtmlWebpackPlugin before others
     // https://github.com/jantimon/html-webpack-plugin#usage
     new HtmlWebpackPlugin({
