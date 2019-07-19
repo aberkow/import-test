@@ -1,12 +1,46 @@
+// give htmlwebpack plugin access to index.hbs
+// import '../index.hbs'
+
+import '../sass/style.scss'
+import '../css/style.css'
+
 const usersList = document.querySelector('#users-list')
 const getUsersBtn = document.querySelector('#get-users')
 const addUserForm = document.querySelector('form')
 const formConfirm = document.querySelector('#form-confirm')
 
+const classTestBtn = document.querySelector('#class-test')
+
+// if (window.innerWidth >= 960) {
+//   import(/* webpackChunkName: 'style-desktop' */ '../sass/style.scss')
+// }
+
+
 document.addEventListener('DOMContentLoaded', () => {
   console.log('just waiting around...')
 })
 
+
+classTestBtn.addEventListener('click', () => {
+  import(/* webpackChunkName: 'classTest' */ './classTest')
+    .then(res => {
+
+      // console.log(res.default, 'res');
+
+      const thing = new res.default()
+      thing.setString('Hello World')
+
+
+      console.log(thing.init())
+
+
+      // const thing = new res.default({ string: 'testing' })
+      // console.log(thing.test, '1')
+      // await thing.init()
+      // console.log(thing.test, '2')
+    })
+    .catch(err => console.log(err))
+})
 
 getUsersBtn.addEventListener('click', () => {
 
